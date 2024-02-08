@@ -1,0 +1,13 @@
+# Block Scalar YAML example file.
+# Test by launching the example app then tapping the "Block Scalar" button.
+# If custom changes are made to this file, please re-launch the app to observe the changes.
+
+literalBlockScalar: |
+  This is
+  a literal block
+  scalar example.
+
+foldedBlockScalar: >
+  This is
+  a folded block
+  scalar example.
