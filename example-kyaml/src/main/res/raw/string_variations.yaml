@@ -1,0 +1,7 @@
+# String Variations YAML example file.
+# Test by launching the example app then tapping the "String Variations" button.
+# If custom changes are made to this file, please re-launch the app to observe the changes.
+
+noQuotes: Example of string without quotes.
+doubleQuotes: "Example with double quotes."
+singleQuotes: 'Example with single quotes.'
