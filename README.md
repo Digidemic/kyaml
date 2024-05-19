@@ -49,7 +49,7 @@ baz: true
 
 <br>
 
-#### Check out the [example app for Kyaml](/example-kyaml/)!
+### Check out the [example app for Kyaml](/example-kyaml/)!
 
 <br>
 
@@ -233,24 +233,33 @@ Usage is simply calling [Kyaml()](#usage--examples) passing up to four arguments
 
 ## Installation
 
-### Install with AAR and gradle (Local)
-1) Download the latest [kyaml.aar](kyaml.aar).
-2) Move `kyaml.aar` to your project's `libs` directory (Example: `YourProject/app/libs/`).
-3) In your `build.gradle`, add <b>only one</b> of the following to your `dependencies { }`:
+### Install with JitPack
+[![](https://jitpack.io/v/Digidemic/kyaml.svg)](https://jitpack.io/#Digidemic/kyaml)
+1) Add JitPack to your project's root `build.gradle` at the end of `repositories`:
 - ```groovy
-  // adds only kyaml.aar
-  implementation fileTree(dir: "libs", include: ["kyaml.aar"])
-  
-  // OR
-
-  // adds all .aar files in your libs directory.
-  implementation fileTree(dir: "libs", include: ["*.aar"]) 
+  dependencyResolutionManagement {
+      repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+      repositories {
+          mavenCentral()
+          maven { url 'https://jitpack.io' }
+    }
+  }
   ```
-4) [Sync gradle](https://www.delasign.com/blog/how-to-sync-an-android-project-with-its-gradle-files-in-android-studio/) successfully.
-5) Done! Your Android project is now ready to use Kyaml. Go to [Usage / Examples](#usage--examples) or [Syntax](#syntax) for Kyaml usage!
-
-### Install with gradle (Remote)
->Coming soon!
+2) In the `build.gradle` of the module(s) you wish to use Kyaml with, add the following to `dependencies`:
+- ```groovy
+  dependencies {
+      // Required: Installs the .aar without any documentation.
+      implementation 'com.github.digidemic:kyaml:1.1.0'
+      
+      // Optional: Displays documentation while writing coding. 
+      implementation 'com.github.digidemic:kyaml:1.1.0:javadoc'
+  
+      // Optional: Displays documentation (more comprehensive than javadoc in some cases) and uncompiled code when stepping into library.
+      implementation 'com.github.digidemic:kyaml:1.1.0:sources'
+  }
+  ```
+3) [Sync gradle](https://www.delasign.com/blog/how-to-sync-an-android-project-with-its-gradle-files-in-android-studio/) successfully.
+4) Done! Your Android project is now ready to use Kyaml. Go to [Examples](#usage--examples) or [Syntax](#syntax) for Kyaml usage!
 
 <br>
 

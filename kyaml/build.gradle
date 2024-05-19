@@ -1,6 +1,7 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    id 'com.android.library' version '8.0.2'
+    id 'org.jetbrains.kotlin.android' version '1.6.20'
+    id 'maven-publish'
 }
 
 android {
@@ -8,8 +9,8 @@ android {
     compileSdk 33
 
     defaultConfig {
-        minSdk 16
-        targetSdk 33
+        minSdk 4
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -28,6 +29,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    publishing {
+        singleVariant("release") {
+            withJavadocJar()
+        }
+    }
 }
 
 dependencies {
@@ -37,4 +44,43 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     testImplementation "io.mockk:mockk-android:1.13.5"
     testImplementation "io.mockk:mockk-agent:1.13.5"
+}
+
+afterEvaluate {
+    android.libraryVariants.each {variant ->
+        publishing.publications.create(variant.name, MavenPublication){
+            from components.findByName(variant.name)
+
+            groupId = 'com.github.kyaml'
+            artifactId = "kyaml"
+            version = '1.1.0'
+
+            pom {
+                name = 'Kyaml'
+                description = 'A simple, flexible, and forgiving YAML parser for Android'
+                url = 'https://github.com/Digidemic/kyaml'
+
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'Digidemic'
+                        name = 'Adam Steinberg'
+                        email = 'digidemic@gmail.com'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git://github.com/Digidemic/kyaml.git'
+                    developerConnection = 'scm:git://github.com/Digidemic/kyaml.git'
+                    url = 'git://github.com/Digidemic/kyaml.git'
+                }
+            }
+        }
+    }
 }
