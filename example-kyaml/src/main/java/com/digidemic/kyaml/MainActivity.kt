@@ -1,5 +1,5 @@
 /**
- * Kyaml v1.0.0 - https://github.com/Digidemic/Kyaml
+ * Kyaml v1.1.0 - https://github.com/Digidemic/kyaml
  * (c) 2024 DIGIDEMIC, LLC - All Rights Reserved
  * Kyaml developed by Adam Steinberg of DIGIDEMIC, LLC
  * License: Apache License 2.0
